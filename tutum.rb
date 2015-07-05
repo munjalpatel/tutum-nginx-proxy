@@ -135,6 +135,14 @@ class Service
     @host ||= containers.first.host rescue nil
   end
 
+  def ssl_key
+    @ssl_key ||= containers.first.ssl_key rescue nil
+  end
+  
+  def ssl_crt
+    @ssl_crt ||= containers.first.ssl_crt rescue nil
+  end
+
   def ssl?
     @ssl ||= containers.first.ssl? rescue nil
   end
