@@ -79,8 +79,16 @@ class Container
     attributes['container_envvars'].find {|e| e['key'] == 'VIRTUAL_HOST' }['value']
   end
 
+  def ssl_key
+    attributes['container_envvars'].find {|e| e['key'] == 'SSL_KEY' }['value']
+  end
+  
+  def ssl_crt
+    attributes['container_envvars'].find {|e| e['key'] == 'SSL_CRT' }['value']
+  end
+
   def ssl?
-    !!attributes['container_envvars'].find {|e| e['key'] == 'FORCE_SSL' }['value']
+    !(ssl_key.empty? || ssl_crt.epmty?)
   end
 
   def node
